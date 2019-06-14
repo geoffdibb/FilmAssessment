@@ -1,7 +1,8 @@
 function getfilmname() {
-        let text = document.getElementById("filmname").value;
+    
+    let text = document.getElementById("filmname").value;
 
-sessionStorage.setItem('filmsearchedfor', text);
+    sessionStorage.setItem('filmsearchedfor', text);
 
     return text;
 
@@ -51,7 +52,7 @@ function promises(req) {
 
 }
 function resolved(result) {
-    if (result.accountNumber === undefined) {
+    if (result.title === undefined) {
         for (let c in result) {
             let output = JSON.stringify(result[c]);
             let textnode = document.createTextNode(output);
@@ -62,22 +63,22 @@ function resolved(result) {
 
             let tr = "<tr>";
             tr += "<td>|-- Title --|</td>";
-            if (result[0] !== undefined) {
-                for (let i = 0; i < result.length; i++) {
+            if (output[0] !== undefined) {
+                for (let i = 0; i < output.length; i++) {
                     //output to table
                     let filmstring = "";
-                    for (let j = 0; j < result[i].pets.length; j++) {
-                        filmstring += result[i].pets[j].title + ", ";
+                    for (let j = 0; j < output[i].title.length; j++) {
+                        filmstring += output[i].title[j].title + ", ";
                     }
-                    tr += "<td>" + result[i].id + "</td><td>";
+                    tr += "<td>" + output[i].id + "</td><td>";
                 }
                 results.innerHTML += tr;
             } else {
                 let filmstring = "";
-                for (let j = 0; j < result.pets.length; j++) {
-                    filmstring += result.pets[j].title + ", ";
+                for (let j = 0; j < output.title.length; j++) {
+                    filmstring += output.title[j].title + ", ";
                 }
-                tr += "<td>" + result[i].id + "</td><td>$";
+                tr += "<td>" + result[i].title + "</td><td>$";
             }
         }
     }
