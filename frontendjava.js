@@ -1,4 +1,5 @@
 function getfilmname() {
+    
     let text = document.getElementById("filmname").value;
 
     sessionStorage.setItem('filmsearchedfor', text);
