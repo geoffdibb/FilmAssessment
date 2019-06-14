@@ -1,14 +1,14 @@
- function getfilmname() {
-          const text = sessionStorage.getItem('filmsearchedfor');
-
-    return text;
-
+function savedfilm(){
+        const x = sessionStorage.getItem('filmsearchedfor');
+        return x;
 }
-const clickActions = {
 
-search: () => buttonClick('GET', 'http://www.omdbapi.com/?apikey=a0829fbd&s=' + getfilmname()),
 
+
+function onloadevent(){
+buttonClick('GET', 'http://www.omdbapi.com/?apikey=a0829fbd&t=' + savedfilm())
 }
+
 function details(){
     window.location = 'filmdetails.html';
 
@@ -66,3 +66,5 @@ function resolved(result) {
 function rejected(reason) {
     console.log(reason);
 }
+
+onloadevent();
