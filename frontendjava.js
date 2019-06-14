@@ -51,7 +51,7 @@ function promises(req) {
 function resolved(result) {
     if (result.accountNumber === undefined) {
         for (let c in result) {
-            let output = JSON.stringify(result[c]);
+            let output = JSON.stringify(result[c].title);
             let textnode = document.createTextNode(output);
             let node = document.createElement("div");
             node.setAttribute("id", "resInner");
@@ -66,3 +66,6 @@ function resolved(result) {
 function rejected(reason) {
     console.log(reason);
 }
+
+
+   
