@@ -1,10 +1,17 @@
  function getfilmname() {
     let text = document.getElementById("filmname").value;
+            sessionStorage.setItem('filmsearchedfor', text);
     return text;
+
 }
 const clickActions = {
 
 search: () => buttonClick('GET', 'http://www.omdbapi.com/?apikey=a0829fbd&s=' + getfilmname()),
+
+}
+function details(){
+    window.location = 'filmdetails.html';
+
 }
 
 function buttonClick(reqType, url, body) {
@@ -43,7 +50,7 @@ function promises(req) {
 function resolved(result) {
     if (result.accountNumber === undefined) {
         for (let c in result) {
-            let output = "account" + JSON.stringify(result[c])
+            let output = JSON.stringify(result[c]);
             let textnode = document.createTextNode(output);
             let node = document.createElement("div");
             node.setAttribute("id", "resInner");
